@@ -1,5 +1,6 @@
 package service;
 
+import exception.EmployeeException;
 import vo.EmployeeVO;
 
 import java.io.BufferedReader;
@@ -46,5 +47,17 @@ public class EmployeeService {
     public static EmployeeService getInstance() {
         if(instance == null) instance = new EmployeeService();
         return instance;
+    }
+
+    public void checkDuplicateEmployeeId(String id) throws EmployeeException{
+//        id값만 넣기로 했으니 id값만으로 비교
+        int idx = list.indexOf(new EmployeeVO(id,null,null,0,null));
+        if(idx != -1) throw new EmployeeException("사원번호가 중복되었습니다.");
+
+    }
+
+
+    public boolean appendEmployee(EmployeeVO employeeVO) {
+        return list.add(employeeVO);
     }
 }
