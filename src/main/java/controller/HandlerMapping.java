@@ -14,6 +14,7 @@ public class HandlerMapping {
         Controller controller = null;
         switch (no){
             case 1 -> controller = new EmployeeInsertController();
+            case 2 -> controller = new EmployeeDeleteController();
             case 5 -> controller = new PrintAllController();
         }
         return controller;

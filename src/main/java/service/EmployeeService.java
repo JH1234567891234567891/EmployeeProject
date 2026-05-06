@@ -3,10 +3,7 @@ package service;
 import exception.EmployeeException;
 import vo.EmployeeVO;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class EmployeeService {
@@ -44,6 +41,18 @@ public class EmployeeService {
         }
     }
 
+    public void exportToCSV(){
+        try (FileWriter fw = new FileWriter("employee.csv");
+            PrintWriter pw = new PrintWriter(fw)) {
+
+            list.forEach(item->pw.println(item.toString()));
+            System.out.println("전체 사원 정보 저장 완료");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static EmployeeService getInstance() {
         if(instance == null) instance = new EmployeeService();
         return instance;
@@ -59,5 +68,12 @@ public class EmployeeService {
 
     public boolean appendEmployee(EmployeeVO employeeVO) {
         return list.add(employeeVO);
+    }
+
+    public void deleteEmployee(String id) throws EmployeeException {
+        if(! list.remove(new EmployeeVO(id,null,null,0,null)))
+            throw new EmployeeException("삭제할 사원 정보가 없습니다.");
+//        list.remove(list.stream().equals(id));
+
     }
 }
