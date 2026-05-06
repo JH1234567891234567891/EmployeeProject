@@ -3,11 +3,11 @@ package vo;
 import java.util.Objects;
 
 public class EmployeeVO {
-    private String id ;
-    private String name ;
-    private String position ;
-    private int salary ;
-    private String hireDate ;
+    private String id;
+    private String name;
+    private String position;
+    private int salary;
+    private String hireDate;
 
     public EmployeeVO(String id, String name, String position, int salary, String hireDate) {
         this.id = id;
@@ -59,13 +59,7 @@ public class EmployeeVO {
 
     @Override
     public String toString() {
-        return "EmployeeVO{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", position='" + position + '\'' +
-                ", salary=" + salary +
-                ", hireDate='" + hireDate + '\'' +
-                '}';
+        return id + "," + name + "," + position + "," + salary + "," + hireDate;
     }
 
     @Override

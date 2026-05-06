@@ -2,6 +2,7 @@ package main;
 
 import controller.Controller;
 import controller.HandlerMapping;
+import service.EmployeeService;
 
 import java.util.Scanner;
 
@@ -16,13 +17,16 @@ public class EmployeeMain {
             System.out.println("| 5. 전체 사원 조회  |    0. 프로그램 종료     |");
             System.out.print("| 원하시는 번호를 입력하세요 : ");
 
+
             int no = sc.nextInt(); sc.nextLine();
 
             Controller controller = HandlerMapping.getInstance().createController(no);
             if(controller !=null){
                 controller.execute(sc);
             }
+
             if(no==0) System.out.println("프로그램을 종료합니다."); break;
         }
+
     }
 }
