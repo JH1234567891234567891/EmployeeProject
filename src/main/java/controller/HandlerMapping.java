@@ -16,6 +16,7 @@ public class HandlerMapping {
             case 1 -> controller = new EmployeeInsertController();
             case 2 -> controller = new EmployeeDeleteController();
             case 3 -> controller = new EmployeeUpdateController();
+            case 4 -> controller = new EmployeeSearchForNameController();
             case 5 -> controller = new PrintAllController();
         }
         return controller;

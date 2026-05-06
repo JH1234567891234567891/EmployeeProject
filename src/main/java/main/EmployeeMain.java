@@ -13,7 +13,7 @@ public class EmployeeMain {
             while (true){
                 System.out.println("|------------ 사원 관리 프로그램 ------------|");
                 System.out.println("| 사원 정보를 어떻게 관리하시겠습니까?          |");
-                System.out.println("| 1. 등록 | 2. 삭제 | 3. 수정 | 4. 검색(사번) |");
+                System.out.println("| 1. 등록 | 2. 삭제 | 3. 수정 | 4. 검색(이름) |");
                 System.out.println("| 5. 전체 사원 조회  |    0. 프로그램 종료     |");
                 System.out.print("| 원하시는 번호를 입력하세요 : ");
 

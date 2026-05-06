@@ -5,6 +5,8 @@ import vo.EmployeeVO;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class EmployeeService {
     private static EmployeeService instance = new EmployeeService();
@@ -44,7 +46,7 @@ public class EmployeeService {
     public void exportToCSV(){
         try (FileWriter fw = new FileWriter("employee.csv");
             PrintWriter pw = new PrintWriter(fw)) {
-
+            pw.println("id,name,position,salary,hireDate");
             list.forEach(item->pw.println(item.toString()));
             System.out.println("전체 사원 정보 저장 완료");
 
@@ -79,5 +81,15 @@ public class EmployeeService {
         int idx = list.indexOf(new EmployeeVO(id,null,null,0,null));
         if(idx == -1) throw new EmployeeException("해당 사원 정보가 없습니다.");
         return list.get(idx);
+    }
+
+    public List<EmployeeVO> searchForNameEmployee(String name) throws EmployeeException {
+//        ArrayList<EmployeeVO> result = new ArrayList<EmployeeVO>();
+//        for(EmployeeVO vo : list ) {if(vo.getName().indexOf(name) != -1 ) result.add(vo);}
+//        if(result.isEmpty()) throw new EmployeeException("검색 결과가 없습니다.");
+//        return result;
+        List<EmployeeVO> rList = list.stream().
+                filter(item -> item.getName().indexOf(name) != -1).collect(Collectors.toList());
+        return rList;
     }
 }
